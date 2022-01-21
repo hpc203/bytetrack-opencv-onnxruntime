@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.5)
+project(bytetrack-opencv-cpp)
+set(CMAKE_CXX_STANDARD 11)
+
+find_package(OpenCV REQUIRED)
+include_directories(include)
+include_directories(/usr/local/include/eigen3)
+include_directories(${OpenCV_INCLUDE_DIRS})
+file(GLOB My_Source_Files src/*.cpp)
+add_executable(bytetrack-opencv-cpp ${My_Source_Files})
+target_link_libraries(bytetrack-opencv-cpp ${OpenCV_LIBS})

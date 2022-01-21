@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.5)
+project(bytetrack-onnxrun-cpp)
+set(CMAKE_CXX_STANDARD 11)
+
+find_package(OpenCV REQUIRED)
+set(onnxruntime_INCLUDE_DIRS /opt/onnxruntime-linux-x64-1.6.0/include)
+include_directories(${onnxruntime_INCLUDE_DIRS})
+include_directories(include)
+include_directories(/usr/local/include/eigen3)
+include_directories(${OpenCV_INCLUDE_DIRS})
+file(GLOB My_Source_Files src/*.cpp)
+add_executable(bytetrack-onnxrun-cpp ${My_Source_Files})
+target_link_libraries(bytetrack-onnxrun-cpp ${OpenCV_LIBS} /opt/onnxruntime-linux-x64-1.6.0/lib/libonnxruntime.so)
